@@ -120,6 +120,7 @@ Hi Aashu 💖 (Ma ❤️ Kanna ❤️ Nanna ❤️ Bangaram ❤️ Bujji ❤️ 
     Waiting for u to choose me. You are my forever Valentine 💖
 </div>
 
+
 <button class="backBtn" id="backButton" onclick="goBack()">Back 💕</button>
 
 <!-- Telugu Romantic Background Music -->
@@ -128,9 +129,9 @@ Hi Aashu 💖 (Ma ❤️ Kanna ❤️ Nanna ❤️ Bangaram ❤️ Bujji ❤️ 
     Your browser does not support the audio element.
 </audio>
 
-
 <script>
 let musicStarted = false;
+
 function playMusic() {
     const overlay = document.getElementById("startOverlay");
     const music = document.getElementById("bgMusic");
@@ -174,6 +175,8 @@ function goBack() {
     document.getElementById("buttonContainer").style.display = "block";
     document.getElementById("question").style.display = "block";
     document.getElementById("subText").style.display = "block";
+    // Reset No button text
+    document.getElementById("noBtn").innerText = "No 😜";
 }
 
 // On hover, No button moves slightly and text changes

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Aashu 💖</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ffe6f2, #fff0f6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    color: #ff4d88;
+    overflow: hidden;
+    flex-direction: column;
+}
+
+h1 { font-size: 2rem; margin-bottom: 15px; }
+h2 { font-weight: normal; }
+
+.buttons {
+    margin-top: 20px;
+    position: relative;
+    height: 120px;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 1rem;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.3s;
+    position: relative;
+}
+
+#yesBtn {
+    background-color: #ff80bf;
+    color: white;
+}
+
+#yesBtn:hover { background-color: #ff4da6; }
+
+#noBtn {
+    background-color: #ffd6e8;
+    color: #ff3385;
+}
+
+.message {
+    display: none;
+    margin-top: 25px;
+    font-size: 1.2rem;
+    max-width: 500px;
+    line-height: 1.6;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.backBtn {
+    display: none;
+    margin-top: 20px;
+    background-color: #ff99cc;
+    color: white;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.heart {
+    position: fixed;
+    font-size: 24px;
+    animation: floatUp 6s linear infinite;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    from { transform: translateY(100vh); opacity: 1; }
+    to { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* Overlay for starting music */
+#startOverlay h1 { 
+    font-size: 2rem; 
+}
+</style>
+</head>
+
+<body>
+
+<!-- Overlay for music start -->
+<div id="startOverlay" onclick="playMusic()" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(255,230,242,0.95);display:flex;justify-content:center;align-items:center;flex-direction:column;z-index:9999;cursor:pointer;">
+    <h1 style="color:#ff4d88;font-size:2rem;">Click anywhere to start 💖</h1>
+</div>
+
+<h1>
+Hi Aashu 💖 (Ma ❤️ Kanna ❤️ Nanna ❤️ Bangaram ❤️ Bujji ❤️ Heroine❤️)
+</h1>
+
+<h2 id="question">Will you be my Valentine? 💌</h2>
+
+<p id="subText"><i>I already know the answer, but I still want to hear it.</i></p>
+
+<div class="buttons" id="buttonContainer">
+    <button id="yesBtn" onclick="sayYes()">Yes 💘</button>
+    <button id="noBtn" onmouseenter="moveNo()">No 😜</button>
+</div>
+
+<div class="message" id="loveMessage">
+    If You said YES…  my heart will become the happiest it has ever been ❤️<br><br>
+    I know we’ve had ups and downs, but I promise to grow,
+    understand you better, and always stand strong with you 💞<br><br>
+    Waiting for u to choose me. You are my forever Valentine 💖
+</div>
+
+<button class="backBtn" id="backButton" onclick="goBack()">Back 💕</button>
+
+<!-- Telugu Romantic Background Music -->
+<audio id="bgMusic" loop>
+    <source src="Love_Bgm.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+</audio>
+
+
+<script>
+let musicStarted = false;
+function playMusic() {
+    const overlay = document.getElementById("startOverlay");
+    const music = document.getElementById("bgMusic");
+    music.play().catch(e => console.log("Audio play blocked:", e));
+    overlay.style.display = "none"; // hide overlay
+}
+
+// Playful texts for No button
+let noTexts = [
+    "Nah nah 😜",
+    "Nope 😂",
+    "Try again 😏",
+    "Can't catch me 😆",
+    "Not happening 😝",
+    "Haha nice try 😌",
+    "Still trying? 🤭",
+    "You wish 😎",
+    "Not today 😝",
+    "Almosttt 😆",
+    "Hehe nope 💕",
+    "Catch me first 😜",
+    "No chance 😏",
+    "Too slow 😆",
+    "Nice attempt 😂"
+];
+let index = 0;
+
+// YES clicked
+function sayYes() {
+    document.getElementById("loveMessage").style.display = "block";
+    document.getElementById("backButton").style.display = "inline-block";
+    document.getElementById("buttonContainer").style.display = "none";
+    document.getElementById("question").style.display = "none";
+    document.getElementById("subText").style.display = "none";
+}
+
+// BACK clicked
+function goBack() {
+    document.getElementById("loveMessage").style.display = "none";
+    document.getElementById("backButton").style.display = "none";
+    document.getElementById("buttonContainer").style.display = "block";
+    document.getElementById("question").style.display = "block";
+    document.getElementById("subText").style.display = "block";
+}
+
+// On hover, No button moves slightly and text changes
+function moveNo() {
+    const button = document.getElementById("noBtn");
+
+    // Random offset within +/- 40px
+    const offsetX = (Math.random() - 0.5) * 80; 
+    const offsetY = (Math.random() - 0.5) * 80;
+
+    button.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+    
+    // Change text
+    button.innerText = noTexts[index];
+    index = (index + 1) % noTexts.length;
+}
+
+// Floating hearts background
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    const emojis = ["💖","❤️","💘","💕","💞","💓","💗"];
+    heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 25 + 15 + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => { heart.remove(); }, 6000);
+}
+
+setInterval(createHeart, 150);
+</script>
+
+</body>
+</html>

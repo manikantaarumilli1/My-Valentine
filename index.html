@@ -139,7 +139,7 @@ function playMusic() {
     overlay.style.display = "none"; // hide overlay
 }
 
-// Playful texts for No button
+
 let noTexts = [
     "Nah nah 😜",
     "Nope 😂",
@@ -159,7 +159,7 @@ let noTexts = [
 ];
 let index = 0;
 
-// YES clicked
+
 function sayYes() {
     document.getElementById("loveMessage").style.display = "block";
     document.getElementById("backButton").style.display = "inline-block";
@@ -168,7 +168,7 @@ function sayYes() {
     document.getElementById("subText").style.display = "none";
 }
 
-// BACK clicked
+
 function goBack() {
     document.getElementById("loveMessage").style.display = "none";
     document.getElementById("backButton").style.display = "none";
@@ -179,7 +179,7 @@ function goBack() {
     document.getElementById("noBtn").innerText = "No 😜";
 }
 
-// On hover, No button moves slightly and text changes
+
 function moveNo() {
     const button = document.getElementById("noBtn");
 
@@ -189,12 +189,12 @@ function moveNo() {
 
     button.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
     
-    // Change text
+    
     button.innerText = noTexts[index];
     index = (index + 1) % noTexts.length;
 }
 
-// Floating hearts background
+
 function createHeart() {
     const heart = document.createElement("div");
     heart.classList.add("heart");
@@ -211,3 +211,4 @@ setInterval(createHeart, 150);
 
 </body>
 </html>
+

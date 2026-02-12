@@ -183,16 +183,24 @@ function goBack() {
 function moveNo() {
     const button = document.getElementById("noBtn");
 
-    // Random offset within +/- 40px
-    const offsetX = (Math.random() - 0.5) * 80; 
-    const offsetY = (Math.random() - 0.5) * 80;
+    // Get screen width & height
+    const maxX = window.innerWidth - button.offsetWidth;
+    const maxY = window.innerHeight - button.offsetHeight;
 
-    button.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-    
-    
+    // Generate completely random position
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+
+    // Make it absolute so it can move anywhere
+    button.style.position = "fixed";
+    button.style.left = randomX + "px";
+    button.style.top = randomY + "px";
+
+    // Change text
     button.innerText = noTexts[index];
     index = (index + 1) % noTexts.length;
 }
+
 
 
 function createHeart() {
@@ -211,4 +219,5 @@ setInterval(createHeart, 150);
 
 </body>
 </html>
+
 
